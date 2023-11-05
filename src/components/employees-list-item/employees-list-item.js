@@ -4,26 +4,22 @@ const EmployeesListItem = (props) => {
     const { name,
         salary,
         onDelete,
-        onToggleIncrease,
-        onTogglePromotion,
+        onToggleProp,
         increase,
         promotion } = props;
 
-    let classNames = 'list-group-item d-flex justify-content-between ';
-    if (increase) {
-        classNames += 'increase';
-    }
-    if (promotion) {
-        classNames += 'like'
-    }
+    let increaseClass = increase ? ' increase' : '',
+        promotionClass = promotion ? ' like' : '';
 
     return (
-        <li className={classNames}>
-            <span onClick={onTogglePromotion} className="list-group-item-label">{name}</span>
+        <li className={`list-group-item d-flex justify-content-between${increaseClass}${promotionClass}`}>
+            <span onClick={onToggleProp} className="list-group-item-label"
+                data-toggle="promotion">{name}</span>
             <input type="text" className="list-group-item-input" defaultValue={salary + '$'} />
             <div className='d-flex justify-content-center align-items-center'>
-                <button onClick={onToggleIncrease} type="button"
-                    className="btn-cookie btn-sm ">
+                <button onClick={onToggleProp} type="button"
+                    className="btn-cookie btn-sm "
+                    data-toggle="increase">
                     <i className="fas fa-cookie"></i>
                 </button>
 
