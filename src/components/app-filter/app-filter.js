@@ -12,7 +12,6 @@ class AppFilter extends Component {
 
     onFilterPost = (e) => {
         const filter = e.currentTarget.getAttribute("data-filter")
-        e.target.className = 'btn btn-light'
         this.setState({
             filter: filter
         })
@@ -23,18 +22,19 @@ class AppFilter extends Component {
         return (
             <div className="btn-group">
                 <button type="button"
-                    className="btn btn-light"
+                    className={`btn ${this.state.filter === '' ? 'btn-light' : 'btn-outline-light'}`}
+                    data-filter=""
                     onClick={this.onFilterPost}>
                     Все сотрудники
                 </button>
                 <button type="button"
-                    className="btn btn-outline-light"
+                    className={`btn ${this.state.filter === 'promotion' ? 'btn-light' : 'btn-outline-light'}`}
                     data-filter="promotion"
                     onClick={this.onFilterPost}>
                     На повышение
                 </button>
                 <button type="button"
-                    className="btn btn-outline-light"
+                    className={`btn ${this.state.filter === 'moreThen1000' ? 'btn-light' : 'btn-outline-light'}`}
                     data-filter="moreThen1000"
                     onClick={this.onFilterPost}>
                     З/П больше 1000$
