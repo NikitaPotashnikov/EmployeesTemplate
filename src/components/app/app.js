@@ -18,7 +18,7 @@ class App extends Component {
         { name: 'Carl W.', salary: 5000, increase: false, promotion: false, id: 3 },
       ],
       term: '',
-      filter: ''
+      filter: 'all'
     }
     this.maxId = 4;
   }
@@ -106,7 +106,7 @@ class App extends Component {
 
         <div className="search-panel">
           <SearchPanel onUpdateSearch={this.onUpdateSearch} />
-          <AppFilter onFilterPost={this.onFilterPost} />
+          <AppFilter onFilterPost={this.onFilterPost} filter={filter} />
         </div>
 
         <EmployeesList
